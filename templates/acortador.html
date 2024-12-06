@@ -34,6 +34,8 @@
     <div class="container">
         <h1 class="title">Acortador de URL</h1>
         <p>Transforma tus enlaces largos en versiones más cortas y fáciles de compartir.</p>
+
+        
         <form method="POST" action="{{ url_for('home') }}">
             <input type="text" name="url" placeholder="Introduce la URL" required>
             <button type="submit">Genera la URL corta</button>

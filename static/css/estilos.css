@@ -99,5 +99,33 @@ p {
     margin: 0 auto;
 }
 
-/* Formularios */
-inpu
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los elementos del formulario */
+    max-width: 400px; /* Ancho máximo para evitar que se estire mucho */
+    margin: 0 auto; /* Centra el formulario */
+    padding: 10px;
+}
+
+label {
+    font-size: 1rem;
+}
+
+input[type="number"], button {
+    padding: 8px;
+    font-size: 1rem;
+    width: 100%; /* Hace que los elementos ocupen todo el ancho disponible */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho */
+}
+
+button {
+    background-color: #4CAF50; /* Un color verde para el botón */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Cambia el color al pasar el mouse */
+}

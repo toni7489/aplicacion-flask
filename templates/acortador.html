@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acorta y personaliza tus URLs de manera rápida y segura.">
+    <meta name="keywords" content="acortador de URLs, enlaces cortos">
+    <title>Acortador de URL</title>
+</head>
+<body>
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <div class="logo">Acortador de URLS</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="menu">
+            <a href="/">Inicio</a>
+            <a href="/acortador">Acortador URLS</a>
+            <a href="/password">Generador de Contraseñas</a>
+        </div>
+    </nav>
+
+    <!-- Espacios para imagen y contenido -->
+    <div class="spacer"></div>
+    <img src="{{ url_for('static', filename='images/cabecera.jpg') }}" alt="Cabecera" class="responsive-image">
+    <div class="image-spacer"></div>
+
+    <div class="container">
+        <h1 class="title">Acortador de URL</h1>
+        <p>Transforma tus enlaces largos en versiones más cortas y fáciles de compartir.</p>
+        <form method="POST" action="{{ url_for('home') }}">
+            <input type="text" name="url" placeholder="Introduce la URL" required>
+            <button type="submit">Genera la URL corta</button>
+        </form>
+        {% if shortened_url %}
+            <p class="shortened">Acortador de URL: <a href="{{ shortened_url }}" target="_blank">{{ shortened_url }}</a></p>
+        {% endif %}
+    </div>
+
+    <!-- JavaScript -->
+    <script src="static/script.js"></script>
+</body>
+</html>

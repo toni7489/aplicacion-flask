@@ -16,7 +16,7 @@ def shorten_url(url):
     s = pyshorteners.Shortener()
     return s.tinyurl.short(url)
 
-# Ruta principal
+# Pagina acortador url
 @app.route("/acortador", methods=["GET", "POST"])
 def home():
     shortened_url = None
@@ -26,7 +26,7 @@ def home():
             shortened_url = shorten_url(url)
     return render_template("acortador.html", shortened_url=shortened_url)
 
-# Ruta para generar contraseña
+# Pagina generar contras
 @app.route('/password', methods=['GET', 'POST'])
 def password():
     contrasena = None
@@ -42,6 +42,11 @@ def password():
             contrasena = "Por favor ingrese un número válido."
     
     return render_template('password.html', contrasena=contrasena)
+
+# Pagina color picker
+@app.route('/colorpicker')
+def colorpicker():
+    return render_template('colorpicker.html')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

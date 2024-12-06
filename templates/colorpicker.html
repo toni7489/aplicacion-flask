@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Color con Código Hexadecimal</title>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Para que el contenido ocupe toda la pantalla */
+            margin: 0; /* Elimina el margen por defecto */
+            text-align: center;
+        }
+
+        .content {
+            text-align: center; /* Asegura que el contenido se centre horizontalmente */
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        input[type="color"] {
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #color-display {
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+
+        #color-code {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+        }
+
+        /* Asegura que la imagen se ajuste al ancho del dispositivo y se mantenga centrada */
+        .responsive-image {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Imagen de cabecera -->
+    <img src="{{ url_for('static', filename='images/password.jpg') }}" alt="Cabecera" class="responsive-image">
+
+    <!-- Contenedor para centrar el contenido debajo de la imagen -->
+    <div class="content">
+        <h1>Selecciona un Color</h1>
+        
+        <label for="color-picker">Escoge un color:</label>
+        <input type="color" id="color-picker">
+        
+        <!-- Cuadro que muestra el color -->
+        <div id="color-display"></div>
+        
+        <!-- Recuadro que muestra el código hexadecimal -->
+        <div id="color-code">#000000</div>
+    </div>
+
+    <script>
+        // Obtenemos los elementos
+        const colorPicker = document.getElementById('color-picker');
+        const colorDisplay = document.getElementById('color-display');
+        const colorCode = document.getElementById('color-code');
+
+        // Función para actualizar el color del cuadro y mostrar el código hexadecimal
+        colorPicker.addEventListener('input', function() {
+            const color = colorPicker.value; // Valor del color seleccionado
+            colorDisplay.style.backgroundColor = color; // Actualizar el color del cuadro
+            colorCode.textContent = color; // Mostrar el código hexadecimal
+        });
+    </script>
+</body>
+</html>

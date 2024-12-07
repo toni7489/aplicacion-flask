@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}"> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Genera códigos QR de forma rápida y sencilla para cualquier URL.">
+<meta name="keywords" content="generador de códigos QR, herramientas online, QR para URLs">
+<title>Generador de Códigos QR</title>
+</head>
+<body>
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <div class="logo">Generador de Códigos QR</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="menu">
+            <a href="/">Inicio</a>
+            <a href="/acortador">Acortador URLS</a>
+            <a href="/password">Generador de Contraseñas</a>
+            <a href="/colorpicker">Selector de color</a>
+            <a href="/qr">Generador QR</a>
+        </div>
+    </nav>
+
+    <!-- Espacio entre el menú y la imagen -->
+    <div class="spacer"></div>
+    
+    <!-- Imagen de cabecera -->
+    <img src="{{ url_for('static', filename='images/qr.jpg') }}" alt="Cabecera" class="responsive-image">
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1 class="title">Generador de Códigos QR</h1>
+        
+        <p class="centered">Introduce una URL para generar un código QR personalizado. Podrás descargarlo y verlo directamente.</p>
+    
+        <!-- Formulario para generar QR -->
+        <form method="POST">
+            URL: <input type="text" name="url" placeholder="https://www.ejemplo.com" required>
+            <button type="submit">Generar QR</button>
+        </form>
+
+        <!-- Mostrar QR generado -->
+        {% if qr_code %}
+            <div class="resultado">
+                <h2>Tu código QR generado:</h2>
+                <img src="data:image/png;base64,{{ qr_code }}" alt="Código QR">
+                <br>
+                <a href="/download_qr?url={{ request.form['url'] }}" download="codigo_qr.png">Descargar Código QR</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- JavaScript -->
+    <script src="static/script.js"></script>
+</body>
+</html>

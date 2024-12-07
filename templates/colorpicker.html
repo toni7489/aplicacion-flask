@@ -7,6 +7,7 @@
     <title>Selector de Color Incrustado</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/colorpicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu_horizontal.css') }}">
   
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
    
@@ -79,5 +80,16 @@
     </script>
 <!-- JavaScript -->
 <script src="static/script.js"></script>
+  <!-- Menú de navegación horizontal al final de la página -->
+  <nav>
+    <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/acortador">Acortador URLS</a></li>
+        <li><a href="/password">Generador de contraseñas</a></li>
+        <li><a href="/colorpicker">Selector de color</a></li>
+        <li><a href="/qr">Generador códigos QR</a></li>
+        
+    </ul>
+</nav>
 </body>
 </html>

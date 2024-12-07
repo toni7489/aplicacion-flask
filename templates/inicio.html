@@ -3,11 +3,12 @@
 <head>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Descubre nuestras herramientas en línea: acortador de URLs, selector de colores y generador de contraseñas. Soluciones rápidas, seguras y fáciles para tus necesidades digitales.">
     <meta name="keywords" content="generador de contraseñas, seguridad online, contraseñas seguras, crear contraseñas, generador aleatorio">
-    <title>Utilidades</title>
+    <title>Inicio | Herramientas Útiles</title> 
 
     
 </head>
@@ -28,6 +29,44 @@
             <a href="/qr">Generador QR</a>
         </div>
     </nav>
+    <!-- Fin barra navegacion -->
+    <header>
+        <h1>Herramientas útiles en Línea</h1>
+        <p>Optimiza tu trabajo con nuestras herramientas prácticas y gratuitas.</p>
+    </header>
+    <main>
+        <section class="utility-grid">
+            <div class="utility-card">
+                <img src="{{ url_for('static', filename='images/acortador-peque.jpg') }}" alt="Acortador de URLS">
+                <h3>Acortador de URLs</h3>
+                <p>Acorta tus enlaces y compártelos de forma más profesional.</p>
+                <a href="/acortador">Explorar</a>
+            </div>
+            <div class="utility-card">
+                <img src="{{ url_for('static', filename='images/colores-peque.jpg') }}" alt="Selector de color">
+                <h3>Selector de Colores</h3>
+                <p>Elige colores perfectos y copia fácilmente los códigos HEX y RGB.</p>
+                <a href="/colorpicker">Explorar</a>
+                
+            </div>
+            <div class="utility-card">
+                <img src="{{ url_for('static', filename='images/password-peque.jpg') }}" alt="Generador de contraseñas">
+                <h3>Generador de Contraseñas</h3>
+                <p>Crea contraseñas seguras y únicas para proteger tus cuentas.</p>
+                <a href="/password">Explorar</a>
+            </div>
+            <div class="utility-card">
+                <img src="{{ url_for('static', filename='images/qr-peque.jpg') }}" alt="Generador de contraseñas">
+                <h3>Generador QR</h3>
+                <p>Genera códigos QR fácilmente para tus proyectos con un click.</p>
+                <a href="/qr">Explorar</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Herramientas Útiles. Todos los derechos reservados.</p>
+    </footer>
+
 
     
 

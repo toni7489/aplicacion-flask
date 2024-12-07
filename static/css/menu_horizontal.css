@@ -1,0 +1,21 @@
+  /* Estilos para el menú horizontal */
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centra el menú horizontalmente */
+}
+nav ul li {
+    margin-right: 20px; /* Espacio entre los enlaces */
+}
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+    font-size: 1rem;
+}
+nav ul li a:hover {
+    color: #13a76e; /* Color de enlace al pasar el ratón */
+    
+}

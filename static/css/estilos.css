@@ -1,4 +1,50 @@
 /* Estilos generales */
+.dropdown-toggle {
+    display: inline-block;
+    vertical-align: middle; /* Alinea verticalmente con otros elementos */
+    padding: 10px 15px; /* Ajusta el espacio interno */
+    line-height: normal; /* Establece una altura uniforme */
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Mantén el color del texto */
+    list-style: none; /* Elimina la "bolita" de lista */
+    color: white; /* Cambia el color del texto */
+  }
+  
+  li {
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul.dropdown-menu {
+    padding: 0;
+    margin: 0;
+  }
+  
+#ciberseguridad-menu {
+    display: none;
+  }
+  #ciberseguridad-menu li {
+    margin-bottom: 10px; /* Ajusta el valor según lo que necesites */
+    margin-bottom: 10px; /* Espacio entre elementos */
+    padding-left: 55px; /* Ajusta este valor para el nivel de indentación */
+  }
+  #ciberseguridad-menu li a:hover {
+    background-color: rgb(10, 105, 19); /* Cambia el fondo al pasar el ratón */
+    color: rgb(255, 255, 255); /* Opcional: cambia el color del texto al pasar el ratón */
+  }
+  
+
+
+  
+  li {
+    list-style: none; /* Elimina cualquier marcador de lista, como la bolita */
+    margin: 0;
+    padding: 0;
+  }
+  
+  
 body {
     margin: 0;
     font-family: Arial, sans-serif;

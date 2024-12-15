@@ -28,6 +28,15 @@
             <a href="/password">Generador de Contraseñas</a>
             <a href="/colorpicker">Selector de color</a>
             <a href="/qr">Generador QR</a>
+            <li class="dropdown">
+                <div class="dropdown-toggle" id="ciberseguridad-toggle">Ciberseguridad <span class="caret"></span></div>
+                <ul class="dropdown-menu" id="ciberseguridad-menu">
+                  <li><a href="/escaner-puertos">Escáner de Puertos</a></li>
+                  <li><a href="/vulnerabilidades">Vulnerabilidades</a></li>
+                </ul>
+              </li>
+              
+              
         </div>
     </nav>
     <!-- Fin barra navegacion -->
@@ -70,7 +79,14 @@
 
 
     
+<script>
+document.getElementById("ciberseguridad-toggle").addEventListener("click", function() {
+  const submenu = document.getElementById("ciberseguridad-menu");
+  submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+});
 
+
+</script>
 
  
 

@@ -54,8 +54,6 @@ def password():
 def colorpicker():
     return render_template('colorpicker.html')
 
-
-
 #Generador codigo QR    
 @app.route('/qr', methods=['GET', 'POST'])
 def index():
@@ -100,6 +98,20 @@ def download_qr():
 
     # Enviar la imagen como archivo descargable
     return send_file(img_io, as_attachment=True, download_name='codigo_qr.png', mimetype='image/png')
+
+#Pagina escaner puertos
+@app.route('/escaner-puertos')
+def escaner():
+    return render_template('escaner-puertos.html')
+#Pagina vulneravilidades
+
+@app.route('/vulnerabilidades')
+def vulnerabilidades():
+                     return render_template('vulnerabilidades.html')
+
+
+
+
 
 
 if __name__ == '__main__':

@@ -9,6 +9,8 @@
 <meta name="keywords" content="generador de códigos QR, herramientas online, QR para URLs">
 <meta name="google-adsense-account" content="ca-pub-5180054260984452">
 <title>Generador de Códigos QR</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5180054260984452"
+     crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Menú de Navegación -->
@@ -25,6 +27,13 @@
             <a href="/password">Generador de Contraseñas</a>
             <a href="/colorpicker">Selector de color</a>
             <a href="/qr">Generador QR</a>
+            <li class="dropdown">
+                <div class="dropdown-toggle" id="ciberseguridad-toggle">Ciberseguridad <span class="caret"></span></div>
+                <ul class="dropdown-menu" id="ciberseguridad-menu">
+                  <li><a href="/escaner">Escáner de Puertos</a></li>
+                  <li><a href="/vulnerabilidades">Vulnerabilidades</a></li>
+                </ul>
+            </li>
         </div>
     </nav>
 
@@ -56,6 +65,14 @@
             </div>
         {% endif %}
     </div>
+<!-- Script para el menu cibereguridad -->  
+<script>
+    document.getElementById("ciberseguridad-toggle").addEventListener("click", function() {
+      const submenu = document.getElementById("ciberseguridad-menu");
+      submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    });
+    
+</script>
 
 </body>
 </html>

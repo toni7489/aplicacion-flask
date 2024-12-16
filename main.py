@@ -9,6 +9,8 @@ import base64
 import qrcode
 import io
 import base64
+import socket
+
 
 app = Flask(__name__)
 
@@ -99,10 +101,55 @@ def download_qr():
     # Enviar la imagen como archivo descargable
     return send_file(img_io, as_attachment=True, download_name='codigo_qr.png', mimetype='image/png')
 
-#Pagina escaner puertos
-@app.route('/escaner-puertos')
+
+# Ruta principal que renderiza 'escaner.html'
+@app.route('/escaner')
 def escaner():
-    return render_template('escaner-puertos.html')
+    return render_template('escaner.html')  # Aquí renderizamos 'escaner.html'
+
+# Ruta para procesar el formulario y realizar el escaneo
+@app.route('/scan', methods=['POST'])
+def scan():
+    host = request.form['host']
+    port_range = request.form['range']  # Recibimos el rango de puertos del formulario
+    
+    # Parseamos el rango de puertos (Ejemplo: 1-1024)
+    try:
+        start_port, end_port = map(int, port_range.split('-'))
+    except ValueError:
+        error_message = "El formato del rango de puertos es incorrecto. Usa el formato: 1-1024."
+        return render_template('resultados-escaneo.html', error=error_message)
+
+    try:
+        ip = socket.gethostbyname(host)  # Resolución de nombre de dominio a IP
+        results = []
+        
+        # Escanear puertos dentro del rango proporcionado
+        for puerto in range(start_port, end_port + 1):
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(1)  # Timeout de 1 segundo por puerto
+            result = sock.connect_ex((ip, puerto))
+            if result == 0:  # Si la conexión es exitosa, el puerto está abierto
+                results.append(f"Puerto abierto: {puerto}")
+            sock.close()
+
+        # Si no se encuentran puertos abiertos, agregar mensaje correspondiente
+        if not results:
+            results.append("No se encontraron puertos abiertos.")
+        
+        return render_template('resultados-escaneo.html', host=host, ip=ip, results=results)
+
+    except socket.gaierror:
+        error_message = "El nombre de dominio o la dirección IP ingresada no es válida."
+        return render_template('resultados-escaneo.html', error=error_message)
+    except Exception as e:
+        error_message = f"Ocurrió un error: {e}"
+        return render_template('resultados-escaneo.html', error=error_message)
+
+
+
+
+
 #Pagina vulneravilidades
 
 @app.route('/vulnerabilidades')

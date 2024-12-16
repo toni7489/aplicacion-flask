@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados del Escaneo</title>
+</head>
+<body>
+    <h1>Resultados del Escaneo</h1>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% else %}
+        <p>Escaneo realizado para: {{ host }} (IP: {{ ip }})</p>
+        <ul>
+            {% for result in results %}
+                <li>{{ result }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="/">Volver al inicio</a>
+</body>
+</html>

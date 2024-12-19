@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40 ANIVERSARIO DEPORTIVO SHAOLIN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+        .modal .controls {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .modal .control {
+            color: white;
+            font-size: 2em;
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .modal .control:hover {
+            color: #ccc;
+        }
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 1.5em;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal .close:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>40 ANIVERSARIO DEPORTIVO SHAOLIN</h1>
+    <div class="gallery">
+        {% for image in images %}
+            <img src="{{ url_for('static', filename='images/' + image) }}" 
+                 alt="Foto" 
+                 data-index="{{ loop.index0 }}">
+        {% endfor %}
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close" onclick="closeModal()">×</span>
+        <div class="controls">
+            <span class="control" onclick="prevImage()">&#10094;</span>
+            <span class="control" onclick="nextImage()">&#10095;</span>
+        </div>
+        <img id="modalImage" src="" alt="Foto Ampliada">
+    </div>
+
+    <script>
+        const images = Array.from(document.querySelectorAll('.gallery img'));
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        let currentIndex = 0;
+
+        // Open modal and show selected image
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentIndex = index;
+                openModal(img.src);
+            });
+        });
+
+        function openModal(src) {
+            modalImage.src = src;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            modalImage.src = images[currentIndex].src;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            modalImage.src = images[currentIndex].src;
+        }
+
+        // Close modal on outside click
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
